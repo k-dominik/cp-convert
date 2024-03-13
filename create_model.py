@@ -9,11 +9,24 @@ from cellpose import models
 model_names = [
     "cyto",
     "nuclei",
-    # "tissuenet",
-    # "livecell",
     "cyto2",
     "CP",
     "CPx",
+
+    # "tissuenet",
+    # "livecell",
+    "TN1",
+    "TN2",
+    "TN3",
+    "LC1",
+    "LC2",
+    "LC3",
+    "LC4",
+]
+
+model_names_CCBYNC = [
+    # "tissuenet",
+    # "livecell",
     "TN1",
     "TN2",
     "TN3",
@@ -105,7 +118,10 @@ for model in model_names:
         documentation=doc_file,
         # additional metadata about authors, licenses, citation etc.
         authors=[{"name": "Carsen Stringer", "affiliation": "Janelia"}],
-        license="CC-BY-4.0",
+        if model in model_names_CCBYNC:
+            license="CC-BY-NC-4.0",
+        else:
+            license="CC-BY-4.0",
         tags=["cellpose-segmentation"],  # the tags are used to make models more findable on the website
         cite=[{"text": "Stringer et al.", "doi": "doi:10.1038/s41592-020-01018-x"}],
     )
